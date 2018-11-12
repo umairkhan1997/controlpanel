@@ -14,6 +14,7 @@ import Next from './next';
 import notification from './notification';
 import Drawers from './drawer';
 import showNoti from './showNoti';
+import fileInput from './fileinput';
 const customHistory=createBrowserHistory()
 
 
@@ -75,6 +76,7 @@ class CustomRoutes extends Component{
         <PrivateRoute authed={this.state.authed}  path='/notification' component={notification} />
         <PrivateRoute authed={this.state.authed}  path='/drawer' component={Drawers} />
         <PrivateRoute authed={this.state.authed}  path='/showNoti' component={showNoti} />
+        <PrivateRoute authed={this.state.authed}  path='/fileInput' component={fileInput} />
         {/* <PrivateRoute  authed={this.state.authed} path="/select" component={Select} />
         {/* <Route  path='/select' component={Select} /> */}
         {/* <PrivateRoute  authed={this.state.authed}  path='/donateForm' component={DonateForm} />  */}

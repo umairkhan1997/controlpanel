@@ -29,6 +29,12 @@ export default (state= INITIAL_STATE,action)=>{
                     ...state,
                     getData:state.getData.concat(action.payload)
                 })
+                case ActionTypes.DELETEONE:
+                state.getData.splice(action.payload, 1)
+                return({
+                    ...state,
+                    getData:state.getData.concat()
+                })
                 console.log(state);
    default:
    return state;

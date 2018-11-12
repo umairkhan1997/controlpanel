@@ -132,7 +132,7 @@ margin:5,marginTop:50
     paddingBottom: theme.spacing.unit * 2,
     width:'50%',
     marginLeft:'25%',
-    Height:'50%'
+    Height:'100%'
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -182,7 +182,11 @@ class notification extends React.Component {
       this.props.history.push('/notification')
     }
     showNoti(){
-      this.props.history.push('/showNoti')
+      this.props.history.push('/showNoti'); 
+    }
+
+    fileInput(){
+      this.props.history.push('/fileInput');
     }
     formHandler(ev){
       this.setState({
@@ -250,12 +254,16 @@ console.log(this.state.file);
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
+        <div>
         <Divider />
         <List onClick={this.main.bind(this)}>Main</List>
         <Divider />
         <List onClick={this.addNoti.bind(this)}>Add Notification</List>
         <Divider />
         <List onClick={this.showNoti.bind(this)}> Show Notification</List>
+        <Divider />
+        <List onClick={this.fileInput.bind(this)}> Add File</List>
+        </div>
       </Drawer>
     );
 

@@ -3,6 +3,7 @@ const ActionTypes = {
     SINGIN:"SINGIN",
     SignOut:'SignOut',
     getData:"getData",
+    DELETEONE:"DELETEONE",
     
    
 }

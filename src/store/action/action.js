@@ -72,25 +72,43 @@ export function addNotifi(notifi) {
   return dispatch => {
     console.log(firebase, "fire")
     console.log(notifi, "dhuhfkjds")
-    firebase.storage().ref().child(`images/`).put(notifi.file).then((url) => {
-      firebase.storage().ref().child(`images/${notifi.file}`).getDownloadURL().then(function (url) {
-        console.log(url)
-        notifi.uri = url
+    firebase.storage().ref().child(`images/${notifi.file.name}`).put(notifi.file).then((url) => {
+      firebase.storage().ref().child(`images/${notifi.file.name}`).getDownloadURL().then(function (urlll) {
+        // console.log(url)
+        console.log(urlll)
+        notifi.file = urlll
         console.log(notifi);
         firebase.database().ref('/').child("notification").push(notifi);
+        getData()
       })
     })
   }
 }
-
+//var arr=[];
 export function getData(){
   return dispatch=>{
       firebase.database().ref('/').child('notification').once('value',snap=>{
         console.log('action data',snap.val());
+
           let fbData=snap.val()
-          fbData.id=snap.key
+          // fbData.id=snap.key
+          // arr.push(fbData);
           dispatch({type:'getData',payload:fbData})
 
       })
+  }
+}
+
+export function deleteOne(id,index){
+  console.log(id,"dlelte");
+  return dispatch=>{
+      firebase.database().ref('/').child(`notification/${id}`).remove()
+      .then(function (){
+        console.log("success")
+       
+    }).catch(function(){
+        console.log("Unsuccess")
+    })
+      dispatch({type:'DELETEONE',payload:index})
   }
 }
